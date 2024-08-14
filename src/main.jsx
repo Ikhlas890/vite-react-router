@@ -2,9 +2,29 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App.jsx'
 import './index.css'
+import { RouterProvider, createBrowserRouter } from 'react-router-dom'
+import Home from './pages/Home.jsx'
+import Contact from './pages/Contact.jsx'
+
+const router = createBrowserRouter([
+  {
+    path: "/vite-react-router/",
+    element: <App />,
+    children: [
+      {
+        path: "/vite-react-router/",
+        element: <Home />
+      },
+      {
+        path: "/vite-react-router/contact",
+        element: <Contact />
+      },
+    ]
+  }
+])
 
 createRoot(document.getElementById('root')).render(
   <StrictMode>
-    <App />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
